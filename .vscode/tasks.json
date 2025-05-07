@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "gcc build active file",
+            "type": "shell",
+            "command": "/usr/bin/gcc",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compiling C file"
+        },
+        {
+            "label": "run active file",
+            "type": "shell",
+            "command": "${fileDirname}/${fileBasenameNoExtension}",
+            "group": "none",
+            "dependsOn": "gcc build active file",
+            "detail": "Running C file"
+        }
+    ]
+}
